@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--                            (0) Connect our Project to Firebase
+
+1 - GO to google and type firebase
+2 - GO TO Console
+3 - Click > Add project
+4 - name your project select accept and click create project
+5 - adding Firebase to your app by selecting from { IOS, Android, Web, Unity}
+6 - there is 3 substeps
+	A - get the package name from you project and register your app in the website
+	B - give the app nickname
+	c - add the SHA1 you can get it from your android project
+	    FIRST run your app at least one time to build the gradle
+	    then click on ProjectName(root) eCommerce(root) the Open
+	    android then click siningreport and from ther you can get the SHA1
+	    copy and past it into the website before hitting register
+	Inside android studio in the left side of the run button choose app
+7 - Download config file
+ | Download google-services.json | then copy it
+Switch to the Project view in Android Studio to see your project root directory.
+Right click on the app dirctory a past your file
+8 - Copy and past inside gradle files but be aware of the files you past into (Hit sync now)
+
+9 - Open firebase console > eCommerce Project > inside Real time Database > Create Database
+	Choose Test Mode read and write will be true to allow the user to
+	upload and download files fro your app -->
+<!--
+                                            (1)
+   design this layout screen
+-->
+<!--
+    (2) Go to MainActivity.java
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcome"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/applogo"
+        />
+
+    <TextView
+        android:id="@+id/app_slogan"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="142dp"
+        android:text="Find, Discover, Choose and Buy anything online."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:layout_marginRight="80dp"
+        android:layout_alignParentRight="true" />
+
+
+    <Button
+        android:id="@+id/main_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:padding="20dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Already have an Account? Login"
+        android:textColor="@android:color/white"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:id="@+id/main_join_now_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_login_btn"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/input_design"
+        android:padding="20dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:text="Join Now"
+        android:textColor="@android:color/white"
+        />
+
+
+</RelativeLayout>
