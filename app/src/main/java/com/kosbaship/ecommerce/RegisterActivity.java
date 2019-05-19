@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
 
         //                              (5)
+        // (6) go to LoginActivity.java
         // (5 - A)
         // when the user hit CreateAccountButton create account for him
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
             //(5 - B - 1)
-            // check if this a unique ohone number into our database
+            // check if this a unique phone number into our database
             ValidatephoneNumber(name, phone, password);
         }
     }
@@ -112,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
     //(5 - B - 2)
     // phone number validation helper method
     private void ValidatephoneNumber(final String name, final String phone, final String password) {
-        //(5 - B - 4)
+        //(5 - B - 4 - end of five)
         // create a database reference
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
