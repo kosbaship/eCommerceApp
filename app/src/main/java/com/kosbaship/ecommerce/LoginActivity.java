@@ -22,6 +22,8 @@ import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.rey.material.widget.CheckBox;
 
+import io.paperdb.Paper;
+
 public class LoginActivity extends AppCompatActivity {
 
     //                                  (6)
@@ -34,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     // (6 - C - 4 - c)
     // this is the parent db name (table name)
     private String parentDbName = "Users";
+
+    //                      (8 - C)
+    // define and initialize Remember ME checkbox
     private CheckBox chkBoxRememberMe;
 
     @Override
@@ -46,6 +51,13 @@ public class LoginActivity extends AppCompatActivity {
         InputPassword = findViewById(R.id.login_password_input);
         InputPhoneNumber = findViewById(R.id.login_phone_number_input);
         loadingBar = new ProgressDialog(this);
+
+        // (8 - D)
+        // get reference to Remember ME checkbox
+        chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
+        // initialize the library to be able to use it
+        Paper.init(this);
+
         AdminLink = findViewById(R.id.admin_panel_link);
         NotAdminLink = findViewById(R.id.not_admin_panel_link);
         ForgetPasswordLink = findViewById(R.id.forget_password_link);
@@ -98,6 +110,17 @@ public class LoginActivity extends AppCompatActivity {
     // check if this account already register into the database
     private void AllowAccessToAccount(final String phone, final String password) {
 
+        //                      (8 - E)
+        // (8 - F) Go to MainActivity.java
+        // if the check box is checked
+        // store the user phone number and password inside the prevalent class variables
+        // to be able to use them to let the user stayed logged in
+        if(chkBoxRememberMe.isChecked())
+        {
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+        }
+
         // (6 - C - 4 - a)
         // create a database reference
         final DatabaseReference RootRef;
@@ -112,6 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                 // check if the user phone number  exists
                 if (dataSnapshot.child(parentDbName).child(phone).exists()) {
                     //                          (7)
+                    // (8) Go Build.gradle
                     // (7 - A) Go create Users.java
                     // ((7 - C)
                     // get the phone and the password from the database and store them
