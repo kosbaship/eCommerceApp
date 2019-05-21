@@ -31,6 +31,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
+
+    //                                  (9)
+    // (9 - A - 1)
+    // initialize the views to the admin link
     private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
     // (6 - C - 4 - c)
@@ -50,6 +54,11 @@ public class LoginActivity extends AppCompatActivity {
         LoginButton = findViewById(R.id.login_btn);
         InputPassword = findViewById(R.id.login_password_input);
         InputPhoneNumber = findViewById(R.id.login_phone_number_input);
+        // (9 - A - 2)
+        // create reference to admin link
+        AdminLink = findViewById(R.id.admin_panel_link);
+        NotAdminLink = findViewById(R.id.not_admin_panel_link);
+        ForgetPasswordLink = findViewById(R.id.forget_password_link);
         loadingBar = new ProgressDialog(this);
 
         // (8 - D)
@@ -58,9 +67,6 @@ public class LoginActivity extends AppCompatActivity {
         // initialize the library to be able to use it
         Paper.init(this);
 
-        AdminLink = findViewById(R.id.admin_panel_link);
-        NotAdminLink = findViewById(R.id.not_admin_panel_link);
-        ForgetPasswordLink = findViewById(R.id.forget_password_link);
 
         // (6 - C - 1)
         // when the user hit LoginButton login him
@@ -71,6 +77,47 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
         });
+
+
+        //(9 - B)
+        //  when the user click on Iam Admin do this
+        AdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                //change the login button text
+                LoginButton.setText("Login Admin");
+                // hide the admin text
+                AdminLink.setVisibility(View.INVISIBLE);
+                //show the not admin text
+                NotAdminLink.setVisibility(View.VISIBLE);
+                // change the database parent (table)
+                // to the one that store  Admins to deal with it
+                parentDbName = "Admins";
+            }
+        });
+        //(9 - C)
+        //(9 - D) go to the website and create one admin user manually
+        //        and also create the parent node (table)
+        //        Until we create a separated panel for the admins (or company) creation
+        //        the company can add approve admin so that to keep eye on the users
+        // when the user click on Iam not Admin do this
+        NotAdminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                //change the login button text
+                LoginButton.setText("Login");
+                // show the admin text
+                AdminLink.setVisibility(View.VISIBLE);
+                // hide the not admin text
+                NotAdminLink.setVisibility(View.INVISIBLE);
+                // change the database parent (table)
+                // to the one that store  Users to deal with it
+                parentDbName = "Users";
+            }
+        });
+
 
     }
     // (6 - C - 3)
@@ -152,11 +199,29 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getPhone().equals(phone)){
                         // if the phone is correct then check password
                         if (usersData.getPassword().equals(password)){
-                            Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
-                            // ((7 - C - 2 - a) Go and create HomeActivity.java
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                            //(9 - E)
+                            // open AdminActivity.java Or HomeActivity.java
+                            if (parentDbName.equals("Admins"))
+                            {
+                                Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+
+                                //(9 - E - 1)
+                                //(9 - E - 2) Go and Create AdminCategoryActivity.java
+                                // open the AdminCategoryActivity.java
+                                Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                startActivity(intent);
+                            }
+                            else if (parentDbName.equals("Users"))
+                            {
+                                Toast.makeText(LoginActivity.this, "logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                                // ((7 - C - 2 - a) Go and create HomeActivity.java
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                Prevalent.currentOnlineUser = usersData;
+                                startActivity(intent);
+                            }
+
                         } else {
                             loadingBar.dismiss();
                             InputPassword.requestFocus();

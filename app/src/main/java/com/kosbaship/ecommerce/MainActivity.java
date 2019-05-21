@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         loadingBar = new ProgressDialog(this);
 
 
-        // (8 - F - 1)
+        //                                  (8 - F - 1)
+        // (9) Go to LoginActivity.java
         // initialize this library to use it
         // why in the main activity?
         // because if the user was checked the Remember Me box in the
