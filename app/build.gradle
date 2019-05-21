@@ -27,6 +27,10 @@ dependencies {
     // add Firebase database dependencies and open firebase assistant
     // make connect to real tme database
     implementation 'com.google.firebase:firebase-database:17.0.0'
+    //(11 - C)
+    //(11 - D) go to AdminAddNewProductActivity.java
+    // to storing files into the firebase database we have to implement this
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
     // (3 - A - 1) add this  Material Design fully
     // (3 - B)  go to activity_login.xml
     // animated library to use it's component
