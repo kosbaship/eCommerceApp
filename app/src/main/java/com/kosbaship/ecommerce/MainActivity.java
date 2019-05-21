@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -116,14 +117,14 @@ public class MainActivity extends AppCompatActivity {
         RootRef = FirebaseDatabase.getInstance().getReference();
 
         // (8 - F - 5 - b )
-        // here we will see if the user avilible or not
+        // here we will see if the user available or not
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 // (8 - F - 5 - c )
                 // check if the user phone number  exists
-                if (dataSnapshot.child(parentDbName).child(userPhoneKey).exists()) {
+                if (dataSnapshot.child("Users").child(userPhoneKey).exists()) {
 
                     // get the phone and the password from the database and store them
                     // inside an instance of the model class Users
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     // setter and getter methods
 
                     // (8 - F - 5 - e )
-                    Users usersData = dataSnapshot.child(parentDbName).child(userPhoneKey).getValue(Users.class);
+                    Users usersData = dataSnapshot.child("Users").child(userPhoneKey).getValue(Users.class);
 
                     // (8 - F - 5 - f )
                     // compare the data comes from the database with the data comes from the user in
@@ -145,6 +146,35 @@ public class MainActivity extends AppCompatActivity {
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        } else {
+                            loadingBar.dismiss();
+                            Toast.makeText(MainActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                    // also modified the welcome activity to open the saved admin
+                } else if (dataSnapshot.child("Admins").child(userPhoneKey).exists()) {
+
+                    // get the phone and the password from the database and store them
+                    // inside an instance of the model class Users
+                    // getValue() perform getting data from the snapshot children and
+                    // store it into a model class so u can refer to ur data later by
+                    // setter and getter methods
+                    Users usersData = dataSnapshot.child("Admins").child(userPhoneKey).getValue(Users.class);
+
+                    // compare the data comes from the database with the data comes from the user in
+                    // the LoginActivity
+                    if (usersData.getPhone().equals(userPhoneKey)){
+
+                        // if the phone is correct then check password
+                        if (usersData.getPassword().equals(userPasswordKey)){
+                            Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+
+                            Intent intent = new Intent(MainActivity.this, AdminCategoryActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
                             loadingBar.dismiss();
@@ -155,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     // (8 - F - 5 - i )
                     // if the user phone number do not exist
-                    Toast.makeText(MainActivity.this, "Account with this " + userPhoneKey + " number do not exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Account with this " + userPhoneKey + " number do not exists. in " , Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
             }

@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // (8 - D)
         // get reference to Remember ME checkbox
-        chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
+        chkBoxRememberMe = findViewById(R.id.remember_me_chkb);
         // initialize the library to be able to use it
         Paper.init(this);
 
@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
         RootRef = FirebaseDatabase.getInstance().getReference();
 
         // (6 - C - 4 - b)
-        // here we will see if the user avilible or not
+        // here we will see if the user available or not
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -210,6 +210,8 @@ public class LoginActivity extends AppCompatActivity {
                                 //(9 - E - 2) Go and Create AdminCategoryActivity.java
                                 // open the AdminCategoryActivity.java
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                // to close all the existing activities we need to do some flags in this Intent
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             }
                             else if (parentDbName.equals("Users"))
@@ -219,6 +221,7 @@ public class LoginActivity extends AppCompatActivity {
                                 // ((7 - C - 2 - a) Go and create HomeActivity.java
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 Prevalent.currentOnlineUser = usersData;
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             }
 
