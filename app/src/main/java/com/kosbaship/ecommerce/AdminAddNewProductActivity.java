@@ -104,7 +104,11 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         // (12) Go to the browser and click storage >Get Started >Get it
         //      click rules change       allow read, write: if request.auth != null;
         //                      to            allow read, write: if request.auth == null;
-        // click publish
+        //      click publish
+        //  (13) there is a steps the Go nav_header_home.xml
+        //          1 - Delete HomeActivity.java
+        //          2 - Delete activity_home.xml
+        //          3 - Create Navigation Drawer Activity (With the last Deleted Activity HOME)
         // allow the user to select product image
         InputProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
