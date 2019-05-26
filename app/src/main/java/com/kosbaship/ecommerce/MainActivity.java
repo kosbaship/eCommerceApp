@@ -145,6 +145,16 @@ public class MainActivity extends AppCompatActivity {
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            // (13 - C - 2)
+                            // (13 - C - 3) go back to HomeActivity.java
+                            //                          (This step also inside MainActivity.java)
+                            // save the user data into prevalent class because we will need it after here being login
+                            // to get fis info and this is one of the power of using the model class it will save
+                            // the logged in user data instead of retrieving it again and again
+                            // usersData :
+                            //      is referencing to the User.class which in code means it
+                            //      containing all the current user data
+                            Prevalent.currentOnlineUser = usersData;
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {
@@ -173,6 +183,16 @@ public class MainActivity extends AppCompatActivity {
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, AdminCategoryActivity.class);
+                            // (13 - C - 2)
+                            // (13 - C - 3) go back to HomeActivity.java
+                            //                          (This step also inside MainActivity.java)
+                            // save the user data into prevalent class because we will need it after here being login
+                            // to get fis info and this is one of the power of using the model class it will save
+                            // the logged in user data instead of retrieving it again and again
+                            // usersData :
+                            //      is referencing to the User.class which in code means it
+                            //      containing all the current user data
+                            Prevalent.currentOnlineUser = usersData;
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                         } else {

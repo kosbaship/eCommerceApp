@@ -14,7 +14,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
+import com.kosbaship.ecommerce.Prevalent.Prevalent;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
 public class HomeActivity extends AppCompatActivity
@@ -44,13 +48,33 @@ public class HomeActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
         navigationView.setNavigationItemSelectedListener(this);
+
+        //                                  (13 - C)
+        // (13 - C - 1)
+        // (13 - C - 2) go to LoginActivity.java
+        // initialize the header view to display the user name after he logged in
+        // and also the user image
+        View headerView = navigationView.getHeaderView(0);
+        TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
+        CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
+
+        // (13 - C - 3)
+        // set the current user name for him
+        //                  uninstall ur app and run to test it
+        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+
     }
 
     @Override

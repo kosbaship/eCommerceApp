@@ -210,6 +210,16 @@ public class LoginActivity extends AppCompatActivity {
                                 //(9 - E - 2) Go and Create AdminCategoryActivity.java
                                 // open the AdminCategoryActivity.java
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                // (13 - C - 2)
+                                // (13 - C - 3) go back to HomeActivity.java
+                                //                          (This step also inside MainActivity.java)
+                                // save the user data into prevalent class because we will need it after here being login
+                                // to get fis info and this is one of the power of using the model class it will save
+                                // the logged in user data instead of retrieving it again and again
+                                // usersData :
+                                //      is referencing to the User.class which in code means it
+                                //      containing all the current user data
+                                Prevalent.currentOnlineUser = usersData;
                                 // to close all the existing activities we need to do some flags in this Intent
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
@@ -220,7 +230,17 @@ public class LoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
                                 // ((7 - C - 2 - a) Go and create HomeActivity.java
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                // (13 - C - 2)
+                                // (13 - C - 3) go back to HomeActivity.java
+                                //                          (This step also inside MainActivity.java)
+                                // save the user data into prevalent class because we will need it after here being login
+                                // to get fis info and this is one of the power of using the model class it will save
+                                // the logged in user data instead of retrieving it again and again
+                                // usersData :
+                                //      is referencing to the User.class which in code means it
+                                //      containing all the current user data
                                 Prevalent.currentOnlineUser = usersData;
+                                // to close all the existing activities we need to do some flags in this Intent
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             }

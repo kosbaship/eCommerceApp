@@ -8,6 +8,9 @@ import com.kosbaship.ecommerce.Model.Users;
 // and also this class will help us with {Forget Password, Remember Me}
 public class Prevalent {
     // common data of the user
+    // we will save here all the current user data when he login
+    // because we will need to access his info to use it for displaying
+    // his pic and name ... etc     in the app
     public static Users currentOnlineUser;
 
     //                      (8 - B)
