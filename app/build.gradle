@@ -31,6 +31,16 @@ dependencies {
     //(11 - D) go to AdminAddNewProductActivity.java
     // to storing files into the firebase database we have to implement this
     implementation 'com.google.firebase:firebase-storage:17.0.0'
+    // (13 - D - 5 - a)
+    // (13 - D - 5 - b) go back to HomeActivity.java
+    // add this dependency to use firebase Recycler Adapter
+    // make sure to fit this version with the
+    // {database - core - storage} versions
+    implementation 'com.firebaseui:firebase-ui-database:4.0.0'
+    // (13 - D - 5 - d - Two - 1)
+    // (13 - D - 5 - d - Two - 2) go back to HomeActivity.java
+    // add Picasso Library to display pics
+    implementation 'com.squareup.picasso:picasso:2.71828'
     // (3 - A - 1) add this  Material Design fully
     // (3 - B)  go to activity_login.xml
     // animated library to use it's component
