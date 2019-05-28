@@ -111,7 +111,8 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-    // (13 - D - 5)
+    //                          (13 - D - 5)
+    // (14) Go and create SettingsActivity.java
     // by using Firebase Recycler Adapter we will retrieve out Products
     @Override
     protected void onStart() {
@@ -237,7 +238,9 @@ public class HomeActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_settings:
-
+                //(14 - A - 2)
+                // open settings activity
+                startActivity(new Intent(HomeActivity.this, SettinsActivity.class));
                 break;
             case R.id.nav_logout:
                 // (13 - B - 2 - c)
