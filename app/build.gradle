@@ -60,6 +60,12 @@ dependencies {
     // (13 - A - 5) go back to nav_header_home.xml
     // add this Circle Image View Library
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+    //(14 - B - 4 - c - Four)
+    //(14 - B - 4 - c - Five) Go to SettinsActivity.java
+    // add this library to get the feature crop image
+    // make sure to make it version 2.7
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

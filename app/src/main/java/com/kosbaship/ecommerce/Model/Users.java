@@ -3,6 +3,11 @@ package com.kosbaship.ecommerce.Model;
 // ((7 - B) go and create Prevalent.java
 // create this model
 public class Users {
+    //(14 - B - 3 - c) go back to SittingsActivity.java
+    //(14 - B - 4) go back to SittingsActivity.java
+    // add here the image and address
+
+    // if this user exist in the data base
     // make sure to create these name like what in the database
     private String name, phone, password, image, address;
 

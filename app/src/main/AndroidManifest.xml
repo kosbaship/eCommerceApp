@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kosbaship.ecommerce">
 
+    <!--     //(14 - B - 4 - c - Three - 2)
+        add the permissions
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,6 +31,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
+
+        <!--                //(14 - B - 4 - c - Three - 1)
+            //(14 - B - 4 - c - Four) GO to Build.gradle
+        -->
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
 </manifest>

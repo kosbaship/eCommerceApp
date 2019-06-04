@@ -101,6 +101,13 @@ public class HomeActivity extends AppCompatActivity
         //                  uninstall ur app and run to test it
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
 
+        //(14 - B - 5)
+        // get the user image from the db and
+        // display it in the drawer home activity
+        // get the image from the current onlin user
+        // display this while the image loading
+        // dislpay this image here
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
         // (13 - D - 5 - e - 2)
         // get reference to it
@@ -239,6 +246,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.nav_settings:
                 //(14 - A - 2)
+                //(14 - B) Go to SettinsActivity.java
                 // open settings activity
                 startActivity(new Intent(HomeActivity.this, SettinsActivity.class));
                 break;
