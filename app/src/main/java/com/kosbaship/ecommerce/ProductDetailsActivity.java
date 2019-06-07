@@ -1,19 +1,30 @@
 package com.kosbaship.ecommerce;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kosbaship.ecommerce.Model.Products;
+import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 
 
 //                              (15 - B)
@@ -53,6 +64,85 @@ public class ProductDetailsActivity extends AppCompatActivity {
         // (15 - C - 3)
         getProductDetails(productID);
 
+        // (15 - C - 5)
+        addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                if (state.equals("Order Placed") || state.equals("Order Shipped"))
+                {
+                    Toast.makeText(ProductDetailsActivity.this, "you can add purchase more products, once your order is shipped or confirmed.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    // (15 - C - 5 - a)
+                    addingToCartList();
+                }
+            }
+        });
+
+    }
+
+    // (15 - C - 5 - b)
+    private void addingToCartList() {
+        // to store current date and time to save it with the product
+        String saveCurrentTime, saveCurrentDate;
+
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        // get current time
+        saveCurrentTime = currentDate.format(calForDate.getTime());
+
+        // we will store the cart list inside the firebase db
+        // and also we create a specific node for that
+        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+
+        // we use hash map to store in the database
+        final HashMap<String, Object> cartMap = new HashMap<>();
+        cartMap.put("pid", productID);
+        cartMap.put("pname", productName.getText().toString());
+        cartMap.put("price", productPrice.getText().toString());
+        // this is the current date and time to the db with the product
+        cartMap.put("date", saveCurrentDate);
+        cartMap.put("time", saveCurrentTime);
+        cartMap.put("quantity", numberButton.getNumber());
+        cartMap.put("discount", "");
+
+        // save the current product inside the currrent user with it's phone inside Userview node inside cartlist node
+        cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
+                .child("Products").child(productID)
+                .updateChildren(cartMap)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            // we do this so the admin can specify the user and the product he want to
+                            // purchase
+                            // by that we store the cart list two times one for the user view and another for the
+                            // admin
+                            cartListRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone())
+                                    .child("Products").child(productID)
+                                    .updateChildren(cartMap)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task)
+                                        {
+                                            if (task.isSuccessful())
+                                            {
+                                                Toast.makeText(ProductDetailsActivity.this, "Added to Cart List.", Toast.LENGTH_SHORT).show();
+
+                                                Intent intent = new Intent(ProductDetailsActivity.this, HomeActivity.class);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+                });
     }
 
 
@@ -85,4 +175,5 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
 }
