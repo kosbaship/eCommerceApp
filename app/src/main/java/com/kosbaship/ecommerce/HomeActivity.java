@@ -101,10 +101,11 @@ public class HomeActivity extends AppCompatActivity
         //                  uninstall ur app and run to test it
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
 
-        //(14 - B - 5)
+        //                      (14 - B - 5)
+        //(15) go and create ProductDelailsActivity.java
         // get the user image from the db and
         // display it in the drawer home activity
-        // get the image from the current onlin user
+        // get the image from the current online user
         // display this while the image loading
         // dislpay this image here
         Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);

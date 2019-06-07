@@ -65,7 +65,10 @@ dependencies {
     // add this library to get the feature crop image
     // make sure to make it version 2.7
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
-
+    //(15 - A - 1)
+    //(15 - A - 2) go to activity_product_detailes.xml
+    //add thie elegant button library
+    implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
