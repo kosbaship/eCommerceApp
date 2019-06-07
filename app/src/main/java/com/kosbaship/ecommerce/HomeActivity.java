@@ -156,11 +156,15 @@ public class HomeActivity extends AppCompatActivity
                         // or in other word to retrieve pics from db and display it
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
-
-//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view)
-//                            {
+                        //                              (15 - C)
+                        // (15 - C - 1) set up the onclick listener
+                        // (15 - C - 2) goto the ProductDetailsActivity.java
+                        // create aan event listener which will render the clicked product ditails in
+                        // the product activity
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view)
+                            {
 //                                if (type.equals("Admin"))
 //                                {
 //                                    Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
@@ -169,12 +173,13 @@ public class HomeActivity extends AppCompatActivity
 //                                }
 //                                else
 //                                {
-//                                    Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
-//                                    intent.putExtra("pid", model.getPid());
-//                                    startActivity(intent);
+                                    Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
+                                    // pid is product id stored into the db get it with the model class
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
 //                                }
-//                            }
-//                        });
+                            }
+                        });
                     }
                     // (13 - D - 5 - d - One)
                     // access our product layout item here
