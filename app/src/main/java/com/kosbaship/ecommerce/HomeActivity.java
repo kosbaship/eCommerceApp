@@ -157,6 +157,7 @@ public class HomeActivity extends AppCompatActivity
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
                         //                              (15 - C)
+                        // (15 - D) Go and create the CartActivity.java
                         // (15 - C - 1) set up the onclick listener
                         // (15 - C - 2) goto the ProductDetailsActivity.java
                         // create aan event listener which will render the clicked product ditails in

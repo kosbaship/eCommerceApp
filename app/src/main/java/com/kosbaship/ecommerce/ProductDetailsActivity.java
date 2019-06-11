@@ -83,6 +83,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     // (15 - C - 5 - b)
+    // (15 - D) Go and create the CartActivity.java
     private void addingToCartList() {
         // to store current date and time to save it with the product
         String saveCurrentTime, saveCurrentDate;
