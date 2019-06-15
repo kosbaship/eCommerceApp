@@ -69,8 +69,12 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                // (16 - B - 7)
+                // (16 - B - 8) Go back to the CartActivity.java
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -236,6 +240,7 @@ public class HomeActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Intent intent;
         // (13 - B - 2)
         // Handle navigation view item clicks here.
         int id = item.getItemId();
@@ -244,6 +249,10 @@ public class HomeActivity extends AppCompatActivity
         switch (id){
             case R.id.nav_cart:
                 // Handle the Cart action
+                // (16 - B - 7)
+                // (16 - B - 8) Go back to the CartActivity.java
+                intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_orders:
 
@@ -261,7 +270,7 @@ public class HomeActivity extends AppCompatActivity
                 // (13 - B - 2 - c)
                 //enable the logout button and then send the user to the main activity
                 Paper.book().destroy();
-                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                intent = new Intent(HomeActivity.this, MainActivity.class);
                 // to close all the existing activities we need to do some flags in this Intent
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
