@@ -96,30 +96,45 @@ public class CartActivity extends AppCompatActivity {
                 int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTyprProductTPrice;
 
+                // (16 - C)
+                // if the user click on a product inside the cart acitity here we give him the right to
+                // edite or remove this product
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view)
                     {
+                        // create the options that apears in the dialog box
+                        // which will pop up when the user click on the product
                         CharSequence options[] = new CharSequence[]
                                 {
-                                        "Edit",
-                                        "Remove"
+                                        "Edit", // this by defualt take index number 0
+                                        "Remove" // this by defualt take index number 1
                                 };
+                        // create the alert dialog to pop up when the user click on the product
                         AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
                         builder.setTitle("Cart Options:");
 
+                        // this how we create a click listener for every option in the alert dialog
+                        // and also we pass the options as argument with the click listener in the builder
                         builder.setItems(options, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i)
                             {
-                                if (i == 0)
+                                if (i == 0)  // here we check with the index number
                                 {
+                                    // sent the user to ProductDetailsActivity to edit the product as he want
                                     Intent intent = new Intent(CartActivity.this, ProductDetailsActivity.class);
+                                    // becaouse in the ProductDetailsActivity we received the prodect id when the user open a product from the home activity
+                                    // we need also to send the product id when we open the details activity from here
+                                    // becaouse the details activity use this id to get it's proparties from the DB
+                                    // the name should match the recive name in the activity
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
-                                if (i == 1)
+                                if (i == 1) // here we check with the index number
                                 {
+                                    // do remove the item from the curt list in the user view node
+                                    // open the database to see the hirarchky
                                     cartListRef.child("User View")
                                             .child(Prevalent.currentOnlineUser.getPhone())
                                             .child("Products")
@@ -132,7 +147,7 @@ public class CartActivity extends AppCompatActivity {
                                                     if (task.isSuccessful())
                                                     {
                                                         Toast.makeText(CartActivity.this, "Item removed successfully.", Toast.LENGTH_SHORT).show();
-
+                                                        // send the user to the home activity
                                                         Intent intent = new Intent(CartActivity.this, HomeActivity.class);
                                                         startActivity(intent);
                                                     }
@@ -141,6 +156,7 @@ public class CartActivity extends AppCompatActivity {
                                 }
                             }
                         });
+                        // you have to excute this in order to make the aleart dialog to show
                         builder.show();
                     }
                 });
