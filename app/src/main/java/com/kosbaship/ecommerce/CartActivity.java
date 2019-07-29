@@ -34,6 +34,7 @@ public class CartActivity extends AppCompatActivity {
     private Button NextProcessBtn;
     private TextView txtTotalAmount, txtMsg1;
 
+    // (17 - C - 1) this will store the the whole price of all the items in the cart list
     private int overTotalPrice = 0;
 
     @Override
@@ -52,6 +53,23 @@ public class CartActivity extends AppCompatActivity {
         NextProcessBtn = findViewById(R.id.next_btn);
         txtTotalAmount = findViewById(R.id.total_price);
         txtMsg1 = findViewById(R.id.msg1);
+
+        // (17 - C - 3)
+        // (17 - C - 4) Go to the ConfirmFinalOrderActivity
+        // set up the next btn
+        // open the confirm order activity and pass the over all
+        // price to the user
+        NextProcessBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
+                intent.putExtra("Total Price", String.valueOf(overTotalPrice));
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
     //                          (16)
     // retreive the cart list items by using the firebase recycler adapter
@@ -93,10 +111,18 @@ public class CartActivity extends AppCompatActivity {
                 // the same with the name
                 holder.txtProductName.setText(model.getPname());
 
+
+                // (17 - C - 2) get the indevidual product (one by one) and the quantity of each product
+                // and multiplay them to get the total price
+                // and them add the number to the over all price
                 int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice()))) * Integer.valueOf(model.getQuantity());
+                // add this one product tot the total price
                 overTotalPrice = overTotalPrice + oneTyprProductTPrice;
+                // then display the over all price to the user in the top
+                txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));
 
                 // (16 - C)
+                // (17) go and create ConfirmFinalOrderActivity
                 // if the user click on a product inside the cart acitity here we give him the right to
                 // edite or remove this product
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
