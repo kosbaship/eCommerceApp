@@ -19,8 +19,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kosbaship.ecommerce.Model.Cart;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.kosbaship.ecommerce.ViewHolder.CartViewHolder;
@@ -32,6 +35,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     private Button NextProcessBtn;
+
     private TextView txtTotalAmount, txtMsg1;
 
     // (17 - C - 1) this will store the the whole price of all the items in the cart list
@@ -52,6 +56,9 @@ public class CartActivity extends AppCompatActivity {
 
         NextProcessBtn = findViewById(R.id.next_btn);
         txtTotalAmount = findViewById(R.id.total_price);
+
+        // (17 - E - 2)
+        // get reference to this view on the screen
         txtMsg1 = findViewById(R.id.msg1);
 
         // (17 - C - 3)
@@ -78,7 +85,10 @@ public class CartActivity extends AppCompatActivity {
     {
         super.onStart();
 
-//        CheckOrderState();
+        // (17 - E - 4)
+        // (17 - E - 5) Go to ProductDetailsActivity.java
+        // call the method
+        CheckOrderState();
 
         // (16 - A)
         // get reference to the database
@@ -204,5 +214,62 @@ public class CartActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
+    // (17 - E - 3)
+    // create a message to check order state in order to display it when the user
+    // has confirmed his oder in the past and he opend the cart activity again
+    private void CheckOrderState()
+    {
+        // get reference to the data base node "orders" to able to see what's in it
+        // becaouse we save the order with the current user phone number
+        // when we check we use child(Prevalent.currentOnlineUser.getPhone());
+        // which bring the current user phone and check with it
+        DatabaseReference ordersRef;
+        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
+
+        ordersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                // if the user exist (dataSnapshot.exists())
+                // dataSnapshot is what ordersRef lead to
+                if (dataSnapshot.exists())
+                {
+                    // child("state") this state is a chiled inside the user order it self
+                    // it's by defualt not shipped until the admin validate the order
+                    String shippingState = dataSnapshot.child("state").getValue().toString();
+                    String userName = dataSnapshot.child("name").getValue().toString();
+                    // we will notify the user in both cases
+                    if (shippingState.equals("shipped"))
+                    {
+                        txtTotalAmount.setText("Dear " + userName + "\n order is shipped successfully.");
+                        //hide the recyclerView
+                        recyclerView.setVisibility(View.GONE);
+
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        txtMsg1.setText("Congratulations, your final order has been Shipped successfully. Soon you will received your order at your door step.");
+                        // also hide the btn
+                        NextProcessBtn.setVisibility(View.GONE);
+
+                        Toast.makeText(CartActivity.this, "you can purchase more products, once you received your first final order.", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(shippingState.equals("not shipped"))
+                    {
+                        txtTotalAmount.setText("Shipping State = Not Shipped");
+                        recyclerView.setVisibility(View.GONE);
+
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        NextProcessBtn.setVisibility(View.GONE);
+
+                        Toast.makeText(CartActivity.this, "you can purchase more products, once you received your first final order.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 }

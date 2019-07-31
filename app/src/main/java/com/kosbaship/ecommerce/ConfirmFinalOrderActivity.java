@@ -94,6 +94,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
 
     // (17 - D - 2)
+    // (17 - E) Go to activity_cart.xml
     // confirm the order with the current date and time
     // we gona need that date in many things one of them
     // to tell the user u will recevie your items in 24 h

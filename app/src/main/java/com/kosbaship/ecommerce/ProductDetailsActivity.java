@@ -38,9 +38,12 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productPrice, productDescription, productName;
+
     // (15 - C - 2 - a)
     // declare the variable productID to
     // receive the product id that com with the intent
+    // (17 - E - 5)
+    // create the variable state = "Normal"
     private String productID = "", state = "Normal";
 
     @Override
@@ -69,6 +72,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                // (17 - E - 8)
+                // create thiss validation to tell the user about his current state
                 if (state.equals("Order Placed") || state.equals("Order Shipped"))
                 {
                     Toast.makeText(ProductDetailsActivity.this, "you can add purchase more products, once your order is shipped or confirmed.", Toast.LENGTH_LONG).show();
@@ -81,6 +86,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
         });
 
     }
+
+
+    // (17 - E - 7)
+    // call the validation method
+    // inside on start
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        CheckOrderState();
+    }
+
 
     // (15 - C - 5 - b)
     // (15 - D) Go and create the CartActivity.java
@@ -176,5 +194,38 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
     }
+    // (17 - E - 6)
+    // add this method here like the one we create inside the CartActivity.java
+    private void CheckOrderState()
+    {
+        DatabaseReference ordersRef;
+        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
 
+        ordersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                // becaouse we only allow one order so passed on sipping state
+                // prevint the user from adding any other item to the cart if he already made an order
+                if (dataSnapshot.exists())
+                {
+                    String shippingState = dataSnapshot.child("state").getValue().toString();
+
+                    if (shippingState.equals("shipped"))
+                    {
+                        state = "Order Shipped";
+                    }
+                    else if(shippingState.equals("not shipped"))
+                    {
+                        state = "Order Placed";
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

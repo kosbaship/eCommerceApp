@@ -33,7 +33,15 @@
 
     </RelativeLayout>
 
+    <!--
+        // (17 - E - 1)
+        // (17 - E - 2) Go to CartActivity.java
+        add this in visibale message which will show when the user send his final order
+        and wait for the admin to confirm the order for him
 
+        this message will show when the user open the cart to check his order
+        after sending it
+    -->
     <TextView
         android:id="@+id/msg1"
         android:layout_width="match_parent"
