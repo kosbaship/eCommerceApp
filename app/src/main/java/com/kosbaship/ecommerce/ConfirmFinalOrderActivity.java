@@ -1,10 +1,24 @@
 package com.kosbaship.ecommerce;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.kosbaship.ecommerce.Prevalent.Prevalent;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
@@ -38,6 +52,124 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         cityEditText = (EditText) findViewById(R.id.shippment_city);
 
 
+        // (17 - D) when the user hit confirm we should check that the
+        // form is filled with the user data
+        confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // (17 - D - 1)
+                // call the Check helper method
+                Check();
+            }
+        });
 
+    }
+    // (17 - D - 1)
+    // check if the user filled his data or not
+    private void Check()
+    {
+        if (TextUtils.isEmpty(nameEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Please provide your full name.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(phoneEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Please provide your phone number.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(addressEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Please provide your address.", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(cityEditText.getText().toString()))
+        {
+            Toast.makeText(this, "Please provide your city name.", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            // (17 - D - 2)
+            // confirm the order
+            ConfirmOrder();
+        }
+    }
+
+
+    // (17 - D - 2)
+    // confirm the order with the current date and time
+    // we gona need that date in many things one of them
+    // to tell the user u will recevie your items in 24 h
+    private void ConfirmOrder()
+    {
+        // variables for the date and time
+        final String saveCurrentDate, saveCurrentTime;
+
+        // get the current data
+        Calendar calForDate = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calForDate.getTime());
+
+        // get the current time
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrentTime = currentTime.format(calForDate.getTime());
+
+        // create reference to the database
+        // by this we will create another child into our db
+        // and this chiled will be labled "Orders"
+        final DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference()
+                .child("Orders")
+                .child(Prevalent.currentOnlineUser.getPhone());
+
+        // this the basic infos for every order
+        // some of them will come from the user form that he filled
+        // and other is date and time
+        HashMap<String, Object> ordersMap = new HashMap<>();
+        ordersMap.put("totalAmount", totalAmount);
+        ordersMap.put("name", nameEditText.getText().toString());
+        ordersMap.put("phone", phoneEditText.getText().toString());
+        ordersMap.put("address", addressEditText.getText().toString());
+        ordersMap.put("city", cityEditText.getText().toString());
+        ordersMap.put("date", saveCurrentDate);
+        ordersMap.put("time", saveCurrentTime);
+        // the admin will contact the user and approve for this
+        // order to make it in the state "shipped"
+        ordersMap.put("state", "not shipped");
+
+        // this line means in the ordersRef db that we were create plz
+        // save the hashmap info inside this node
+        ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                // if the save process of the order done Successfully
+                // we must empty the cart from the cart child in our db
+                if (task.isSuccessful()) {
+                    // get reference to the database
+                    // then reference to the cart List
+                    // then reference to the user view
+                    // then reference to the current online user
+                    // then remove all  the values
+                    // after that add an on click listener to notify
+                    // and display a toast message and direct the user to the home activity
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("Cart List")
+                            .child("User View")
+                            .child(Prevalent.currentOnlineUser.getPhone())
+                            .removeValue()
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task)
+                                {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(ConfirmFinalOrderActivity.this, "your final order has been placed successfully.", Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+                            });
+                }
+            }
+        });
     }
 }

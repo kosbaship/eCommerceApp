@@ -94,7 +94,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         // get current time
-        saveCurrentTime = currentDate.format(calForDate.getTime());
+        saveCurrentTime = currentTime.format(calForDate.getTime());
 
         // we will store the cart list inside the firebase db
         // and also we create a specific node for that
