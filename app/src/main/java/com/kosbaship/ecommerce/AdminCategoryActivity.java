@@ -18,6 +18,12 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
+        //(18 - A - 2 - a)
+        // get reference to the logout btn and check order state
+        findViewById(R.id.admin_logout_btn).setOnClickListener(this);
+        findViewById(R.id.check_orders_btn).setOnClickListener(this);
+
+
 
         // (10 - B - 1, 2, 3)
         // declare the products views on the screen
@@ -112,6 +118,19 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
                 intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
                 intent.putExtra("category", "Mobile Phones");
                 startActivity(intent);
+                break;
+
+            //(18 - A - 2 - b) create the functions for the two btns (check order & Logout)
+            case  R.id.check_orders_btn:
+                intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
+                startActivity(intent);
+                break;
+            case  R.id.admin_logout_btn:
+                intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                // this flag to clear the activity from the previous task
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
                 break;
 
         }

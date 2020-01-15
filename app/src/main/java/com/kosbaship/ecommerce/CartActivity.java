@@ -87,7 +87,7 @@ public class CartActivity extends AppCompatActivity {
 
         // (17 - E - 4)
         // (17 - E - 5) Go to ProductDetailsActivity.java
-        // call the method
+        // call the method which will check the order state once the activity opened
         CheckOrderState();
 
         // (16 - A)
@@ -216,15 +216,19 @@ public class CartActivity extends AppCompatActivity {
 
     // (17 - E - 3)
     // create a message to check order state in order to display it when the user
-    // has confirmed his oder in the past and he opend the cart activity again
+    // has confirmed his oder in the past and he opened the cart activity again
     private void CheckOrderState()
     {
         // get reference to the data base node "orders" to able to see what's in it
-        // becaouse we save the order with the current user phone number
+        // because we save the order with the current user phone number
         // when we check we use child(Prevalent.currentOnlineUser.getPhone());
         // which bring the current user phone and check with it
         DatabaseReference ordersRef;
-        ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
+        ordersRef = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child("Orders")
+                .child(Prevalent.currentOnlineUser.getPhone());
 
         ordersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -234,8 +238,8 @@ public class CartActivity extends AppCompatActivity {
                 // dataSnapshot is what ordersRef lead to
                 if (dataSnapshot.exists())
                 {
-                    // child("state") this state is a chiled inside the user order it self
-                    // it's by defualt not shipped until the admin validate the order
+                    // child("state") this state is a child inside the user order itself
+                    // it's by default not shipped until the admin validate the order
                     String shippingState = dataSnapshot.child("state").getValue().toString();
                     String userName = dataSnapshot.child("name").getValue().toString();
                     // we will notify the user in both cases
@@ -245,6 +249,7 @@ public class CartActivity extends AppCompatActivity {
                         //hide the recyclerView
                         recyclerView.setVisibility(View.GONE);
 
+                        // shw the hidden text instead the recycler view
                         txtMsg1.setVisibility(View.VISIBLE);
                         txtMsg1.setText("Congratulations, your final order has been Shipped successfully. Soon you will received your order at your door step.");
                         // also hide the btn

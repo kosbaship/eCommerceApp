@@ -97,13 +97,13 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
     // (17 - E) Go to activity_cart.xml
     // confirm the order with the current date and time
     // we gona need that date in many things one of them
-    // to tell the user u will recevie your items in 24 h
+    // to tell the user u will receive your items in 24 h
     private void ConfirmOrder()
     {
         // variables for the date and time
         final String saveCurrentDate, saveCurrentTime;
 
-        // get the current data
+        // get the current date
         Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
@@ -163,6 +163,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                                         Toast.makeText(ConfirmFinalOrderActivity.this, "your final order has been placed successfully.", Toast.LENGTH_SHORT).show();
 
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, HomeActivity.class);
+                                        // this flag will prevent the user from coming back to this activity again
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         finish();

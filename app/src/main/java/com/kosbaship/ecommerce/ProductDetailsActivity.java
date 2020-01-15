@@ -72,8 +72,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
+                // (18) go and create AdminNewOrdersActivity
                 // (17 - E - 8)
-                // create thiss validation to tell the user about his current state
+                // create this validation to tell the user about his current state
                 if (state.equals("Order Placed") || state.equals("Order Shipped"))
                 {
                     Toast.makeText(ProductDetailsActivity.this, "you can add purchase more products, once your order is shipped or confirmed.", Toast.LENGTH_LONG).show();
@@ -89,7 +90,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
 
     // (17 - E - 7)
-    // call the validation method
+    // call the validation method to check order state when first open this activity
     // inside on start
     @Override
     protected void onStart()
@@ -196,6 +197,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
     // (17 - E - 6)
     // add this method here like the one we create inside the CartActivity.java
+    // to prevent the user from adding any other item to the cart if he already made an order
     private void CheckOrderState()
     {
         DatabaseReference ordersRef;
@@ -205,8 +207,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                // becaouse we only allow one order so passed on sipping state
-                // prevint the user from adding any other item to the cart if he already made an order
+                // because we only allow one order so passed on sipping state
+                // prevent the user from adding any other item to the cart if he already made an order
                 if (dataSnapshot.exists())
                 {
                     String shippingState = dataSnapshot.child("state").getValue().toString();
