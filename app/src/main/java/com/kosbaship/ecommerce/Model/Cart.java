@@ -3,6 +3,11 @@ package com.kosbaship.ecommerce.Model;
 // (16 - B - 3) Go Back to CartActivity.java
 // create this model class and assign the variable needed for every
 // single item in the cart list
+// we will get the data from the server and store it here in these variables
+// then we will use this class method to get the data and user it inside the app
+// then reassign the variables again will the next item and this is the concept
+// the variable function itself it will erase the last value and put all the new data
+// (the recycler view adaptor who will regulate this this whole process item by item)
 public class Cart {
     // make sure to match these name with the name the user
     // stored in the database you can go and loo for it

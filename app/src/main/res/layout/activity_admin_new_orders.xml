@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminNewOrdersActivity">
 
-</android.support.constraint.ConstraintLayout>
+<!--
+    //(18 - B - 1) create the design of this activity
+    //(18 - B - 2) go create the orders_layout as a recycler view item
+    //(18 - C) goto AdminNewOrdersActivity.java
+-->
+    <RelativeLayout
+        android:id="@+id/r2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Orders"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+<!--
+    1 - here we add a recycler view
+    2 - then we will create a layout file special for the item itself
+        which inside the (18 - B -2) step
+-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/orders_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/r2">
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

@@ -19,6 +19,7 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
         //(18 - A - 2 - a)
+        //(18 - B) go to admin_new_order.xml
         // get reference to the logout btn and check order state
         findViewById(R.id.admin_logout_btn).setOnClickListener(this);
         findViewById(R.id.check_orders_btn).setOnClickListener(this);
