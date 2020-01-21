@@ -79,7 +79,7 @@ public class CartActivity extends AppCompatActivity {
 
     }
     //                          (16)
-    // retreive the cart list items by using the firebase recycler adapter
+    // Retrieve the cart list items by using the firebase recycler adapter
     @Override
     protected void onStart()
     {
@@ -110,7 +110,9 @@ public class CartActivity extends AppCompatActivity {
         // (16 - B - 6) complete the RecyclerAdapter
         // (16 - B - 7) Go to HomeActivity.java
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
-                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) { // pass fire base recyclerview (options)
+                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) { // pass fire base recycler view (options)
+
+            // in simple we get the data from the model and present it on the screen with the holder 
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
                 // (16 - B - 6 - Second)

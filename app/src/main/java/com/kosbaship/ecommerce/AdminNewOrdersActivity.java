@@ -85,6 +85,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, final int position, @NonNull final AdminOrders model) {
+                        // (19) go and Create AdminUserProductsActivity.java start with the xml file
                         //(18 - C - 3 - b - 6)
                         // display the values (comes from db) in the fields (in the app  to the user)
                         holder.userName.setText("Name: " + model.getName());
@@ -93,18 +94,37 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                         holder.userDateTime.setText("Order at: " + model.getDate() + "  " + model.getTime());
                         holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + ", " + model.getCity());
 
-//                        holder.ShowOrdersBtn.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view)
-//                            {
-//                                String uID = getRef(position).getKey();
-//
-//                                Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
-//                                intent.putExtra("uid", uID);
-//                                startActivity(intent);
-//                            }
-//                        });
-//
+
+
+                        //(19 - B - 2)
+                        // this button will open an activity and present the whole order of the user to the admin
+                        // and we will send the phone number (the user "buyer" id) node which had a node inside it
+                        // with all  the product the user parcheced
+                        holder.ShowOrdersBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view)
+                            {
+
+                                //(19 - B - 8)
+                                // when the admin click on any order in the order list
+                                // it should get the phone number on the user of this order
+                                // we get the position of this order and then we will get the key
+                                String uID = getRef(position).getKey();
+
+
+                                //(19 - B - 3)
+                                //(19 - B - 4) go to AdminUserProductsActivity.java
+                                // create an intent when the Admin clicks on the order it will open an activity
+                                // to show the whole order for this user
+                                Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductsActivity.class);
+                                // this is the phone of the user in the list item
+                                // send it with the intent to let the next activity use this phone
+                                // to retrieve the data from the database
+                                intent.putExtra("uid", uID);
+                                startActivity(intent);
+                            }
+                        });
+
 //                        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //                            @Override
 //                            public void onClick(View view)
