@@ -125,38 +125,53 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                             }
                         });
 
-//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view)
-//                            {
-//                                CharSequence options[] = new CharSequence[]
-//                                        {
-//                                                "Yes",
-//                                                "No"
-//                                        };
-//
-//                                AlertDialog.Builder builder = new AlertDialog.Builder(AdminNewOrdersActivity.this);
-//                                builder.setTitle("Have you shipped this order products ?");
-//
-//                                builder.setItems(options, new DialogInterface.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(DialogInterface dialogInterface, int i)
-//                                    {
-//                                        if (i == 0)
-//                                        {
-//                                            String uID = getRef(position).getKey();
-//
-//                                            RemoverOrder(uID);
-//                                        }
-//                                        else
-//                                        {
-//                                            finish();
-//                                        }
-//                                    }
-//                                });
-//                                builder.show();
-//                            }
-//                        });
+                        //(19 - C)
+                        // allow the admin to remove the order from the (New orders) list
+                        // after packging and shipping the order to the user
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view)
+                            {
+                                //(19 - C - 1)
+                                // display a dialog box
+                                // this charsequence contains the options
+                                CharSequence options[] = new CharSequence[]
+                                        {
+                                                "Yes",
+                                                "No"
+                                        };
+
+                                // the how we build the alert dialog itself
+                                AlertDialog.Builder builder = new AlertDialog.Builder(AdminNewOrdersActivity.this);
+                                builder.setTitle("Have you shipped this order products ?");
+
+                                // the user will choose one of two options
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i)
+                                    {
+                                        if (i == 0) // zero here refer to "Yes btn" which is the first option
+                                        {
+                                            // here we get the Order id from the DB to remove it from our list
+                                            // (this line mean we get the selected order Position in the list
+                                            // to be able t do any action on it in our case here we send this
+                                            // potion to the helper method to use it to erase the order after
+                                            // we sure that the user parchace it)
+                                            String uID = getRef(position).getKey();
+
+                                            RemoverOrder(uID);
+                                        }
+                                        else // otherwise he choose "No"
+                                        {
+                                            finish();
+                                        }
+                                    }
+                                });
+                                //(19 - C - 2)
+                                // display the dipalog box
+                                builder.show();
+                            }
+                        });
                     }
 
                     @NonNull
@@ -200,10 +215,12 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         }
     }
 
-
-//    private void RemoverOrder(String uID)
-//    {
-//        ordersRef.child(uID).removeValue();
-//    }
+    //(19 - C - 3)
+    private void RemoverOrder(String uID)
+    {
+        // this refer to the Orders node
+        // so the order with this position remove it for me plz
+        ordersRef.child(uID).removeValue();
+    }
 
 }
