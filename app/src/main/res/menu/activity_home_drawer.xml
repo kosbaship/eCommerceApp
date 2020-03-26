@@ -15,10 +15,16 @@
             android:title="@string/cart"
             android:iconTint="@android:color/white"
             />
+
+<!--
+                //(20 - B - 3)
+                //(20 - B - 4) go to HomeActivity.java to create the intent
+                // set SearchProductsActivity.java button
+-->
         <item
-            android:id="@+id/nav_orders"
-            android:icon="@drawable/orders"
-            android:title= "@string/orders"
+            android:id="@+id/nav_search"
+            android:icon="@drawable/search"
+            android:title= "@string/serach"
             android:iconTint="@android:color/white"
             />
         <item

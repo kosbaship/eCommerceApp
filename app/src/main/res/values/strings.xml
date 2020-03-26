@@ -19,4 +19,5 @@
     <string name="categories">Categories</string>
     <string name="orders">Orders</string>
     <string name="cart">Cart</string>
+    <string name="serach">Search</string>
 </resources>

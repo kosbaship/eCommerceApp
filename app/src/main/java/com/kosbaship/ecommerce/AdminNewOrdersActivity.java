@@ -126,6 +126,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                         });
 
                         //(19 - C)
+                        //(20) Go and Create SearchProductAactivity.java
                         // allow the admin to remove the order from the (New orders) list
                         // after packging and shipping the order to the user
                         holder.itemView.setOnClickListener(new View.OnClickListener() {

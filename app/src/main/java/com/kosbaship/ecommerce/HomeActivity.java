@@ -254,8 +254,11 @@ public class HomeActivity extends AppCompatActivity
                 intent = new Intent(HomeActivity.this, CartActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_orders:
-
+            //(20 - B - 4)
+            // create the intent for the SearchProductsActivity.java
+            case R.id.nav_search:
+                intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_categories:
 
