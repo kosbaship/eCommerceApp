@@ -131,7 +131,7 @@ public class CartActivity extends AppCompatActivity {
                 // add this one product tot the total price
                 overTotalPrice = overTotalPrice + oneTyprProductTPrice;
                 // then display the over all price to the user in the top
-                txtTotalAmount.setText("Total Price = $" + String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("Total Price = $" + overTotalPrice);
 
                 // (16 - C)
                 // (17) go and create ConfirmFinalOrderActivity

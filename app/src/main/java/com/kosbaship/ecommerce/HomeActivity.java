@@ -164,7 +164,7 @@ public class HomeActivity extends AppCompatActivity
                         // (15 - D) Go and create the CartActivity.java
                         // (15 - C - 1) set up the onclick listener
                         // (15 - C - 2) goto the ProductDetailsActivity.java
-                        // create aan event listener which will render the clicked product ditails in
+                        // create an event listener which will render the clicked product details in
                         // the product activity
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -193,6 +193,7 @@ public class HomeActivity extends AppCompatActivity
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
                     {
                         // access our product layout item here
+                        // this the shape that the product details presented with to the user
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
@@ -255,6 +256,7 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(intent);
                 break;
             //(20 - B - 4)
+            //(20 - C) Go to SearchProductsActivity.java
             // create the intent for the SearchProductsActivity.java
             case R.id.nav_search:
                 intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
