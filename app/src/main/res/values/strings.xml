@@ -20,4 +20,6 @@
     <string name="orders">Orders</string>
     <string name="cart">Cart</string>
     <string name="serach">Search</string>
+    <string name="maintainproducts">Maintain Products</string>
+    <string name="checkneworders">Check New Orders</string>
 </resources>

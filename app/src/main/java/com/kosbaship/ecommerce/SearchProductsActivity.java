@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -51,6 +50,7 @@ public class SearchProductsActivity extends AppCompatActivity {
 
 
         //(20 - C)
+        //(21) Go To activity_admin_category,xml
         //(20 - C - 1)
         // set on click li.. to the Search button
         SearchBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class SearchProductsActivity extends AppCompatActivity {
                 //(20 - C - 3)
                 // get the data from the user (the search word)
                 SearchInput = inputText.getText().toString();
-                // call on start method which we will program inside it the firebase recycler adaptor
+                // call on start method which we will programe inside it the firebase recycler adaptor
                 onStart();
             }
         });
@@ -86,8 +86,7 @@ public class SearchProductsActivity extends AppCompatActivity {
         // startAt(SearchInput) ===> this the variable that save the user word or phrase
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(reference.orderByChild("pname").startAt(SearchInput)
-                                .endAt(SearchInput + "\uf8ff"), Products.class)
+                        .setQuery(reference.orderByChild("pname").startAt(SearchInput).endAt(SearchInput + "\uf8ff"), Products.class)
                         .build();
 
         //(20 - C - 4 - c)
@@ -140,5 +139,4 @@ public class SearchProductsActivity extends AppCompatActivity {
         searchList.setAdapter(adapter);
         adapter.startListening();
     }
-    
 }

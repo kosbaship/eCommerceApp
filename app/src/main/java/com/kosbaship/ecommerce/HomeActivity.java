@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -44,10 +43,28 @@ public class HomeActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+    //(21 - C)
+    //(21 - C - 1)
+    // create this var to
+    // receive the data that comes with the admin previliege
+    private String type = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        //(21 - C - 2)
+        // receive the data from the intent
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        // we make this small validation because the user intent comes empty
+        if (bundle != null) {
+            type = getIntent().getExtras().get("Admin").toString();
+        }
+
+
 
         //                      (13 - D - 5 - c - Two)
         // initialize this db reference
@@ -99,21 +116,24 @@ public class HomeActivity extends AppCompatActivity
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        // (13 - C - 3)
-        // (13 - D) Go and Create product_items_layout.xml
-        // set the current user name for him
-        //                  uninstall ur app and run to test it
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+        // we add this validation becaouse we create the admin only with the name and password
+        // inside the db without any other details like pic and name
+        if (!type.equals("Admin")) {
+            // (13 - C - 3)
+            // (13 - D) Go and Create product_items_layout.xml
+            // set the current user name for him
+            //                  uninstall ur app and run to test it
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
 
-        //                      (14 - B - 5)
-        //(15) go and create ProductDelailsActivity.java
-        // get the user image from the db and
-        // display it in the drawer home activity
-        // get the image from the current online user
-        // display this while the image loading
-        // dislpay this image here
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
+            //                      (14 - B - 5)
+            //(15) go and create ProductDelailsActivity.java
+            // get the user image from the db and
+            // display it in the drawer home activity
+            // get the image from the current online user
+            // display this while the image loading
+            // dislpay this image here
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
         // (13 - D - 5 - e - 2)
         // get reference to it
         recyclerView = findViewById(R.id.recycler_menu);
@@ -168,21 +188,25 @@ public class HomeActivity extends AppCompatActivity
                         // the product activity
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View view)
-                            {
-//                                if (type.equals("Admin"))
-//                                {
-//                                    Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
-//                                    intent.putExtra("pid", model.getPid());
-//                                    startActivity(intent);
-//                                }
-//                                else
-//                                {
+                            public void onClick(View view) {
+                                //(21 - C - 3)
+                                //(21 - C - 4) Go to activity_admin_maintain_products.xml
+                                // here specefy who click on the product the
+                                // admin or the user and direct each one to his
+                                // right activty
+                                if (type.equals("Admin"))
+                                {
+                                    Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
+                                else
+                                {
                                     Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                     // pid is product id stored into the db get it with the model class
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
-//                                }
+                                }
                             }
                         });
                     }

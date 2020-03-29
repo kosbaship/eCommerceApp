@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold"
-        />
+        android:gravity="center_horizontal" />
 
 
 
@@ -152,6 +152,13 @@
 
     </LinearLayout>
 
+
+<!--
+            //(21)
+            //(21 - A)
+            //(21 - B)  Go to AdminCategoryActivity.java
+            add this btn to allow the user to make modification to the product
+-->
     <Button
         android:id="@+id/maintain_btn"
         android:layout_width="match_parent"
@@ -161,17 +168,18 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Maintain Products"
+        android:text="@string/maintainproducts"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textAllCaps="false"
         />
 
-        <!--
-        //(18 - A - 1 - a)
-        //(18 - A - 2) go to AdminCategoryActivity
-            Create this btm
-         -->
+
+    <!--
+    //(18 - A - 1 - a)
+    //(18 - A - 2) go to AdminCategoryActivity
+        Create this btm
+     -->
     <Button
         android:id="@+id/check_orders_btn"
         android:layout_width="match_parent"
@@ -181,9 +189,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Check New Orders"
+        android:text="@string/checkneworders"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textAllCaps="false"
         />
 
@@ -202,9 +210,9 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="15dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textAllCaps="false"
         />
 

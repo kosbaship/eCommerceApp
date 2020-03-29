@@ -45,6 +45,11 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
         findViewById(R.id.watches).setOnClickListener(this);
         findViewById(R.id.mobilephones).setOnClickListener(this);
 
+        //(21 - B - 1)
+        // declare and get reference to this btn on the screen
+        findViewById(R.id.maintain_btn).setOnClickListener(this);
+        //         maintainProductsBtn = (Button) findViewById(R.id.);
+
     }
 
     @Override
@@ -121,6 +126,15 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
                 startActivity(intent);
                 break;
 
+            //(21 - B - 2)
+            //(21 - C) Go to HomeActivity.java
+            // create function to this btn
+            // send data to defrintiate bettwen the admin and the user
+            case  R.id.maintain_btn:
+                intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                intent.putExtra("Admin", "Admin");
+                startActivity(intent);
+                break;
             //(18 - A - 2 - b) create the functions for the two btns (check order & Logout)
             case  R.id.check_orders_btn:
                 intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
