@@ -82,7 +82,11 @@
             android:textColor="@android:color/white"
             android:gravity="center_horizontal" />
 
-
+<!--
+                        //(21 - C - 11)
+                        //(21 - C - 12) go to AdminMaintainProductsActivity
+                        add this btn
+-->
         <Button
             android:id="@+id/delete_product_btn"
             android:layout_width="match_parent"

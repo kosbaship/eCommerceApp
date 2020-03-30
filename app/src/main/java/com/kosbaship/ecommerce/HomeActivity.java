@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -86,12 +88,19 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+
                 // (16 - B - 7)
                 // (16 - B - 8) Go back to the CartActivity.java
-                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
-                startActivity(intent);
+                //(21 - C - 10)
+                //(21 - C - 11) Go To activity_admin_maintain_products
+                // do not allow the admin to open the cart
+                if (!type.equals("Admin")) {
+                    Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                    startActivity(intent);
+                } else {
+                    Snackbar.make(view, "You Not allowed to do that", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 
@@ -197,6 +206,8 @@ public class HomeActivity extends AppCompatActivity
                                 if (type.equals("Admin"))
                                 {
                                     Intent intent = new Intent(HomeActivity.this, AdminMaintainProductsActivity.class);
+                                    // pid is product id stored into the db get it with the model class
+                                    // send the product ID == I think we use the Id if we want to delete it
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
@@ -204,6 +215,7 @@ public class HomeActivity extends AppCompatActivity
                                 {
                                     Intent intent = new Intent(HomeActivity.this, ProductDetailsActivity.class);
                                     // pid is product id stored into the db get it with the model class
+                                    // send the product ID == I think we use the Id if we want to delete it
                                     intent.putExtra("pid", model.getPid());
                                     startActivity(intent);
                                 }
@@ -276,24 +288,51 @@ public class HomeActivity extends AppCompatActivity
                 // Handle the Cart action
                 // (16 - B - 7)
                 // (16 - B - 8) Go back to the CartActivity.java
-                intent = new Intent(HomeActivity.this, CartActivity.class);
-                startActivity(intent);
+                //(21 - C - 10)
+                // do not allow the admin to open the cart
+                if (!type.equals("Admin")) {
+                     intent = new Intent(HomeActivity.this, CartActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(HomeActivity.this, "You Not allowed to do that", Toast.LENGTH_SHORT)
+                            .show();
+                }
                 break;
             //(20 - B - 4)
             //(20 - C) Go to SearchProductsActivity.java
             // create the intent for the SearchProductsActivity.java
             case R.id.nav_search:
-                intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
-                startActivity(intent);
+                //(21 - C - 10)
+                // do not allow the admin to open this
+                if (!type.equals("Admin")) {
+                    intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(HomeActivity.this, "You Not allowed to do that", Toast.LENGTH_SHORT)
+                            .show();
+                }
                 break;
             case R.id.nav_categories:
-
+                //(21 - C - 10)
+                // do not allow the admin to open this
+                if (type.equals("Admin")) {
+                    Toast.makeText(HomeActivity.this, "You Not allowed to do that", Toast.LENGTH_SHORT)
+                            .show();
+                }
                 break;
             case R.id.nav_settings:
                 //(14 - A - 2)
                 //(14 - B) Go to SettinsActivity.java
                 // open settings activity
-                startActivity(new Intent(HomeActivity.this, SettinsActivity.class));
+                //(21 - C - 10)
+                // do not allow the admin to open this
+                if (!type.equals("Admin")) {
+                    intent = new Intent(HomeActivity.this, SettinsActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(HomeActivity.this, "You Not allowed to do that", Toast.LENGTH_SHORT)
+                            .show();
+                }
                 break;
             case R.id.nav_logout:
                 // (13 - B - 2 - c)

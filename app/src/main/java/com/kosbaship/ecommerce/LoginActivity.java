@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 AdminLink.setVisibility(View.INVISIBLE);
                 //show the not admin text
                 NotAdminLink.setVisibility(View.VISIBLE);
+                chkBoxRememberMe.setVisibility(View.INVISIBLE);
                 // change the database parent (table)
                 // to the one that store  Admins to deal with it
                 parentDbName = "Admins";
@@ -112,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                 AdminLink.setVisibility(View.VISIBLE);
                 // hide the not admin text
                 NotAdminLink.setVisibility(View.INVISIBLE);
+                chkBoxRememberMe.setVisibility(View.VISIBLE);
                 // change the database parent (table)
                 // to the one that store  Users to deal with it
                 parentDbName = "Users";
