@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kosbaship.ecommerce.Admin.AdminCategoryActivity;
 import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.rey.material.widget.CheckBox;
@@ -35,6 +36,9 @@ public class LoginActivity extends AppCompatActivity {
     //                                  (9)
     // (9 - A - 1)
     // initialize the views to the admin link
+    ////(22 - A)
+    // after adding the text to the login screen as a btn
+    // declare the var for it
     private TextView AdminLink, NotAdminLink, ForgetPasswordLink;
 
     // (6 - C - 4 - c)
@@ -58,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
         // create reference to admin link
         AdminLink = findViewById(R.id.admin_panel_link);
         NotAdminLink = findViewById(R.id.not_admin_panel_link);
+        ////(22 - B)
+        // get reference to the view on the screen
         ForgetPasswordLink = findViewById(R.id.forget_password_link);
         loadingBar = new ProgressDialog(this);
 
@@ -75,6 +81,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view){
                 // (6 - C - 2)
                 LoginUser();
+            }
+        });
+
+        //(22 - C)
+        //(22 - D) Go to  activity_reset_password.xml
+        // create this activity to direct the user to new activity to reset his password
+        ForgetPasswordLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                // we add this data to notify the reset password acitvity
+                // show the settings that belongs to the login acticity
+                intent.putExtra("check", "login");
+                startActivity(intent);
             }
         });
 

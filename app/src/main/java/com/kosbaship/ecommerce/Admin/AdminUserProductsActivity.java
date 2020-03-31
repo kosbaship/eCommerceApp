@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Admin;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kosbaship.ecommerce.Model.Cart;
+import com.kosbaship.ecommerce.R;
 import com.kosbaship.ecommerce.ViewHolder.CartViewHolder;
 
 public class AdminUserProductsActivity extends AppCompatActivity {

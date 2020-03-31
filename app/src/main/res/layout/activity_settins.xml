@@ -113,7 +113,11 @@
         android:layout_margin="15dp"
         android:padding="10dp"
         />
-
+<!--
+        //(22 - E)
+        //(22 - F) Go to SettinsActivity.java
+        // add this security question btn to allow the user to reset his password
+-->
 
     <Button
         android:id="@+id/security_questions_btn"

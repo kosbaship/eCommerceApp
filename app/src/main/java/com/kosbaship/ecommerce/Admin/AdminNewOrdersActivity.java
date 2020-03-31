@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Admin;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kosbaship.ecommerce.Model.AdminOrders;
+import com.kosbaship.ecommerce.R;
 
 //(18)
 //(18 - A) go  to activity_admin_category.xml

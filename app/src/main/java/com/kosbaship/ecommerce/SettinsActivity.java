@@ -42,6 +42,8 @@ public class SettinsActivity extends AppCompatActivity {
     private CircleImageView profileImageView;
     private EditText fullNameEditText, userPhoneEditText, addressEditText;
     private TextView profileChangeTextBtn,  closeTextBtn, saveTextButton;
+    //(22 - F - 1)
+    // declare this var
     private Button securityQuestionBtn;
 
     //(14 - B - 4 - a)
@@ -77,6 +79,8 @@ public class SettinsActivity extends AppCompatActivity {
         profileChangeTextBtn = findViewById(R.id.profile_image_change_btn);
         closeTextBtn = findViewById(R.id.close_settings_btn);
         saveTextButton = findViewById(R.id.update_account_settings_btn);
+        //(22 - F - 2)
+        // get reference to the views on the screen
         securityQuestionBtn = findViewById(R.id.security_questions_btn);
 
         //(14 - B - 2)
@@ -92,6 +96,23 @@ public class SettinsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        //(22 - F - 3)
+        //(22 - G) Go to ResetPasswordActivity.java
+        // set this btn to open the reset password activity
+        securityQuestionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(SettinsActivity.this, ResetPasswordActivity.class);
+                // we send this data to defrantiate between the user who come from the settings
+                // or the one who comes from login activity because every one will see different
+                // questions
+                intent.putExtra("check", "settings");
+                startActivity(intent);
+            }
+        });
+
 
         //(14 - B - 4 - e)
         // perform storing the user information into the firebase database

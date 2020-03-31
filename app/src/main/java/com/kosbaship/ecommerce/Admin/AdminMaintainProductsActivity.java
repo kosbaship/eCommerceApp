@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Admin;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kosbaship.ecommerce.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -78,6 +79,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
         });
 
         //(21 - C - 12)
+        //(22) Go To LoginActivity.java
         // add this btn to allow the admin delete specific product from the db
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
