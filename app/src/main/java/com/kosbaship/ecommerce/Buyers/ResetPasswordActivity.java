@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Buyers;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,8 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
+import com.kosbaship.ecommerce.R;
 
 import java.util.HashMap;
 
@@ -106,6 +106,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
     }
     //(22 - H - 3)
+    //(23) Go to activity_seller_registration.xml
     // verify the phone number and the answers
     private void verifyUser() {
         // get them from the screen

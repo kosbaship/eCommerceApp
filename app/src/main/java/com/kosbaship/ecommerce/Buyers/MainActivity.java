@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Buyers;
 
 
 import android.app.ProgressDialog;
@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.kosbaship.ecommerce.Admin.AdminCategoryActivity;
 import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
+import com.kosbaship.ecommerce.R;
+import com.kosbaship.ecommerce.Sellers.SellerRegistrationActivity;
 
 import io.paperdb.Paper;
 
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     // (2 - A)
     // declare the button views on the screen
     private Button joinNowButton, loginButton;
+
+    //(23 - A - 4 - a)
+    // declare seller begin btn
+    private TextView sellerBeginButton;
 
     // (8 - F - 5 - g part one )
     private ProgressDialog loadingBar;
@@ -46,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
         // get reference the the button views on the screen
         joinNowButton = findViewById(R.id.main_join_now_btn);
         loginButton = findViewById(R.id.main_login_btn);
+        //(23 - A - 4 - b)
+        // get reference to seller begin btn
+        sellerBeginButton = findViewById(R.id.seller_begin);
+
         // (8 - F - 5 - g part two )
         loadingBar = new ProgressDialog(this);
 
@@ -106,6 +117,17 @@ public class MainActivity extends AppCompatActivity {
                 loadingBar.show();
             }
         }
+
+        //(23 - A - 4 - b)
+        //(23 - A - 5) Go To SellerRegistrationActivity
+        // send the user to Seller Activity
+        sellerBeginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SellerRegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

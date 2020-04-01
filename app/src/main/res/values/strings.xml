@@ -22,4 +22,10 @@
     <string name="serach">Search</string>
     <string name="maintainproducts">Maintain Products</string>
     <string name="checkneworders">Check New Orders</string>
+    <string name="sellerregistrationform">Seller Registration Form</string>
+    <string name="sellername">Name...</string>
+    <string name="sellerphone">Phone...</string>
+    <string name="selleremail">Email...</string>
+    <string name="sellerpassword">Password...</string>
+    <string name="selleraddress">Shop - Bussiness Address...</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Buyers;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
+import com.kosbaship.ecommerce.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

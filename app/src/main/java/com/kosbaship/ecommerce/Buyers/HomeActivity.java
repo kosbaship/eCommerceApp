@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Buyers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.kosbaship.ecommerce.Admin.AdminMaintainProductsActivity;
 import com.kosbaship.ecommerce.Model.Products;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
+import com.kosbaship.ecommerce.R;
 import com.kosbaship.ecommerce.ViewHolder.ProductViewHolder;
 import com.squareup.picasso.Picasso;
 

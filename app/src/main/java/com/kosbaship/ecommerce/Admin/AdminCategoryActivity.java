@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.kosbaship.ecommerce.HomeActivity;
-import com.kosbaship.ecommerce.MainActivity;
+import com.kosbaship.ecommerce.Buyers.HomeActivity;
+import com.kosbaship.ecommerce.Buyers.MainActivity;
 import com.kosbaship.ecommerce.R;
 // (9 - E - 2)
 // (10) GO to activity_admin_category.xml

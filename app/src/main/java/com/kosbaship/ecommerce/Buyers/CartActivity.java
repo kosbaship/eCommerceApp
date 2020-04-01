@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Buyers;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kosbaship.ecommerce.Model.Cart;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
+import com.kosbaship.ecommerce.R;
 import com.kosbaship.ecommerce.ViewHolder.CartViewHolder;
 
 public class CartActivity extends AppCompatActivity {

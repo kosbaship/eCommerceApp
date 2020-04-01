@@ -1,4 +1,4 @@
-package com.kosbaship.ecommerce;
+package com.kosbaship.ecommerce.Buyers;
 
 
 import android.app.ProgressDialog;
@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.kosbaship.ecommerce.Admin.AdminCategoryActivity;
 import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
+import com.kosbaship.ecommerce.R;
 import com.rey.material.widget.CheckBox;
 
 import io.paperdb.Paper;
