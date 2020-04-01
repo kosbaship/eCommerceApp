@@ -25,8 +25,13 @@ dependencies {
     //(5 - B - 3)
     //(5 - B - 4)  Go Back to RegisterActivity.java
     // add Firebase database dependencies and open firebase assistant
-    // make connect to real tme database
+    // make connect to real time database
     implementation 'com.google.firebase:firebase-database:17.0.0'
+    //(23 - B - 5 - d - 1 - One)
+    //(23 - B - 5 - d - 2) Go back to SellerRegistrationActivity
+    // add the firebase Authentication
+    // go to the Sign-in Method on the browser (Enable Email/Password)
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
     //(11 - C)
     //(11 - D) go to AdminAddNewProductActivity.java
     // to storing files into the firebase database we have to implement this

@@ -55,8 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         // when the user hit CreateAccountButton create account for him
         CreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 //(5 - A - 2)
                 CreateAccount();
             }
@@ -66,34 +65,24 @@ public class RegisterActivity extends AppCompatActivity {
 
     //(5 - A - 2)
     // create account helper method
-    private void CreateAccount()
-    {
+    private void CreateAccount() {
 
         // get the information from the user
         String name = InputName.getText().toString();
         String phone = InputPhoneNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
-        // check if he triger the create button without filling the edit texts
-        if (TextUtils.isEmpty(name))
-        {
+        // check if he trigger the create button without filling the edit texts
+        if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, "Please write your name...", Toast.LENGTH_SHORT).show();
             InputName.requestFocus();
-            InputName.requestFocus();
-
-        }
-        else if (TextUtils.isEmpty(phone))
-        {
+        } else if (TextUtils.isEmpty(phone)) {
             Toast.makeText(this, "Please write your phone number...", Toast.LENGTH_SHORT).show();
             InputPhoneNumber.requestFocus();
-        }
-        else if (TextUtils.isEmpty(password))
-        {
+        } else if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please write your password...", Toast.LENGTH_SHORT).show();
             InputPassword.requestFocus();
-        }
-        else
-        {
+        } else {
             //(5 - A - 4)
             // show this dialog bar to the user while
             // checking the data validation
@@ -122,15 +111,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // if the user we creating now his phone number
                 // is exist in the database or not because if he is not
                 // exist into the database then we will let him
                 // to create a new account
                 // I think child("Users") Users is the database table
-                if (!(dataSnapshot.child("Users").child(phone).exists()))
-                {   // here is the code of new user creation
+                if (!(dataSnapshot.child("Users").child(phone).exists())) {   // here is the code of new user creation
                     // put the data inside the firebase database with hash map
                     HashMap<String, Object> userdataMap = new HashMap<>();
                     //store the data that comes from the user in the register
@@ -140,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                     userdataMap.put("password", password);
                     userdataMap.put("name", name);
 
-                    // create a parent node from the Users
+                    // create a parent node from the users
                     // child("Users").child(phone)
                     //      this mean for every user data will be a phone number
                     //      or in other word this is the unique id that we will
@@ -149,14 +136,14 @@ public class RegisterActivity extends AppCompatActivity {
                     //      phone to be attach with it
                     // updateChildren(userdataMap)
                     //      this is the rest of the child attributes
-                    RootRef.child("Users").child(phone).updateChildren(userdataMap)
+                    RootRef.child("Users")
+                            .child(phone)
+                            .updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Void> task)
-                                {
+                                public void onComplete(@NonNull Task<Void> task) {
                                     // if the registration (task) is Successful
-                                    if (task.isSuccessful())
-                                    {
+                                    if (task.isSuccessful()) {
                                         Toast.makeText(RegisterActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
                                         //remove the loading bar
                                         loadingBar.dismiss();
@@ -164,18 +151,14 @@ public class RegisterActivity extends AppCompatActivity {
                                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         //remove the loading bar
                                         loadingBar.dismiss();
                                         Toast.makeText(RegisterActivity.this, "Network Error: Please try again after some time...", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
-                }
-                else
-                {
+                } else {
                     Toast.makeText(RegisterActivity.this, "This " + phone + " already exists.", Toast.LENGTH_SHORT).show();
                     // dismiss the login bar because the user is already exist so we can create account for him
                     loadingBar.dismiss();
