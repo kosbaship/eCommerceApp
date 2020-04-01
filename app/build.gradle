@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.kosbaship.ecommerce"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -27,8 +27,8 @@ dependencies {
     // add Firebase database dependencies and open firebase assistant
     // make connect to real time database
     implementation 'com.google.firebase:firebase-database:17.0.0'
-    //(23 - B - 5 - d - 1 - One)
-    //(23 - B - 5 - d - 2) Go back to SellerRegistrationActivity
+    //(23 - B - 5 - b - 2)
+    //(23 - B - 5 - d - 3) Go back to SellerRegistrationActivity
     // add the firebase Authentication
     // go to the Sign-in Method on the browser (Enable Email/Password)
     implementation 'com.google.firebase:firebase-auth:17.0.0'
