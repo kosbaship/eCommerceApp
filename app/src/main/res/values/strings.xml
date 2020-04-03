@@ -28,4 +28,7 @@
     <string name="selleremail">Email...</string>
     <string name="sellerpassword">Password...</string>
     <string name="selleraddress">Shop - Bussiness Address...</string>
+    <string name="home">Home</string>
+    <string name="add">Add</string>
+    <string name="loggingout">Logging Out</string>
 </resources>

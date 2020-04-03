@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--
+    //(24 - B)
+    //(24 - C) Goto activity_home_seller.xml
+ // create this menu with Three items
+    // they will be the ones at the bottom navigation
+-->
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home"
+        />
+    <item
+        android:id="@+id/nav_add"
+        android:icon="@drawable/add"
+        android:title="@string/add"
+        />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout"
+        android:title="@string/logout"
+        />
+
+
+</menu>

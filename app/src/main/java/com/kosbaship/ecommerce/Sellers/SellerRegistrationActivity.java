@@ -102,6 +102,7 @@ public class SellerRegistrationActivity extends AppCompatActivity {
         if (!sName.equals("") && !sPhone.equals("") && !sEmail.equals("") && !sPassword.equals("") && !sAddress.equals("")){
 
             //(23 - B - 5 - b - 8)
+            //(24)create BottomNavigationActivity starts from build.gradle
             // show this dialog bar to the user while
             // checking the data validation
             loadingBar.setTitle("Creating Seller Account");
@@ -140,8 +141,11 @@ public class SellerRegistrationActivity extends AppCompatActivity {
                                                 //remove the loading bar
                                                 loadingBar.dismiss();
                                                 Toast.makeText(SellerRegistrationActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
+
+                                                //(24 - G - 2)
+                                                //(24 - G - 3) Goto Main Activity.java
                                                 // send the user to SellerHomePage  activity
-                                                Intent intent = new Intent(SellerRegistrationActivity.this, SellerLoginActivity.class);
+                                                Intent intent = new Intent(SellerRegistrationActivity.this, SellerHomeActivity.class);
                                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                                 startActivity(intent);
                                                 finish();

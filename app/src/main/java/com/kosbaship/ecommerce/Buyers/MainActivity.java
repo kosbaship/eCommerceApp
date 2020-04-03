@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +23,7 @@ import com.kosbaship.ecommerce.Admin.AdminCategoryActivity;
 import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.kosbaship.ecommerce.R;
+import com.kosbaship.ecommerce.Sellers.SellerHomeActivity;
 import com.kosbaship.ecommerce.Sellers.SellerRegistrationActivity;
 
 import io.paperdb.Paper;
@@ -129,6 +132,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //(24 - G - 3)
+    //(25) Go TO SellerLoginActivity.java
+    //if the seller already logged in send him to his home activity
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // we have to check that
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if(firebaseUser != null){
+            // send the Seller to MainActivity  activity
+            Intent intent = new Intent(MainActivity.this, SellerHomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
     }
 
     // (8 - F - 5)
