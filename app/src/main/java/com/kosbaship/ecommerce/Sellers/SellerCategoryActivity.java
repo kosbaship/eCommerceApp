@@ -1,12 +1,10 @@
-package com.kosbaship.ecommerce.Admin;
+package com.kosbaship.ecommerce.Sellers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.kosbaship.ecommerce.Buyers.HomeActivity;
-import com.kosbaship.ecommerce.Buyers.MainActivity;
 import com.kosbaship.ecommerce.R;
 // (9 - E - 2)
 // (10) GO to activity_admin_category.xml
@@ -16,7 +14,7 @@ import com.kosbaship.ecommerce.R;
 // implements View.OnClickListener
 // then
 // Override the needed Methods
-public class AdminCategoryActivity extends AppCompatActivity implements View.OnClickListener {
+public class SellerCategoryActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +23,8 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
         //(18 - A - 2 - a)
         //(18 - B) go to admin_new_order.xml
         // get reference to the logout btn and check order state
-        findViewById(R.id.admin_logout_btn).setOnClickListener(this);
-        findViewById(R.id.check_orders_btn).setOnClickListener(this);
+//        findViewById(R.id.admin_logout_btn).setOnClickListener(this);
+//        findViewById(R.id.check_orders_btn).setOnClickListener(this);
 
 
 
@@ -51,7 +49,7 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
 
         //(21 - B - 1)
         // declare and get reference to this btn on the screen
-        findViewById(R.id.maintain_btn).setOnClickListener(this);
+//        findViewById(R.id.maintain_btn).setOnClickListener(this);
         //         maintainProductsBtn = (Button) findViewById(R.id.);
 
     }
@@ -68,64 +66,64 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
          * */
         switch (v.getId()) {
             case R.id.t_shirts:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 // allow the admin to add product to each specific category
                 // send the category info with the intent
                 intent.putExtra("category", "tShirts");
                 startActivity(intent);
                 break;
             case R.id.sports_t_shirts:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Sports tShirts");
                 startActivity(intent);
                 break;
             case R.id.female_dresses:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Female Dresses");
                 startActivity(intent);
                 break;
             case R.id.sweathers:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Sweathers");
                 startActivity(intent);
                 break;
             case R.id.glasses:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Glasses");
                 startActivity(intent);
                 break;
             case R.id.hats_caps:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Hats Caps");
                 startActivity(intent);
                 break;
             case R.id.purses_bags_wallets:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Wallets Bags Purses");
                 startActivity(intent);
                 break;
             case R.id.shoes:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Shoes");
                 startActivity(intent);
                 break;
             case R.id.headphones_handfree:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category",  "HeadPhones HandFree");
                 startActivity(intent);
                 break;
             case R.id.laptop_pc:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Laptops");
                 startActivity(intent);
                 break;
             case R.id.watches:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category",  "Watches");
                 startActivity(intent);
                 break;
             case R.id.mobilephones:
-                intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
+                intent = new Intent(SellerCategoryActivity.this, SellerAddNewProductActivity.class);
                 intent.putExtra("category", "Mobile Phones");
                 startActivity(intent);
                 break;
@@ -134,24 +132,23 @@ public class AdminCategoryActivity extends AppCompatActivity implements View.OnC
             //(21 - C) Go to HomeActivity.java
             // create function to this btn
             // send data to defrintiate bettwen the admin and the user
-            case  R.id.maintain_btn:
-                intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
-                intent.putExtra("Admin", "Admin");
-                startActivity(intent);
-                break;
+//            case  R.id.maintain_btn:
+//                intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+//                intent.putExtra("Admin", "Admin");
+//                startActivity(intent);
+//                break;
             //(18 - A - 2 - b) create the functions for the two btns (check order & Logout)
-            case  R.id.check_orders_btn:
-                intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
-                startActivity(intent);
-                break;
-            case  R.id.admin_logout_btn:
-                intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
-                // this flag to clear the activity from the previous task
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-                break;
-
+//            case  R.id.check_orders_btn:
+//                intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
+//                startActivity(intent);
+//                break;
+//            case  R.id.admin_logout_btn:
+//                intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+//                // this flag to clear the activity from the previous task
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//                finish();
+//                break;
         }
     }
 }

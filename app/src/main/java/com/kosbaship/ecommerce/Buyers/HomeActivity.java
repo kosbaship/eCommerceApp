@@ -165,9 +165,13 @@ public class HomeActivity extends AppCompatActivity
         // (13 - D - 5 - a)   go to Build.gradle
         // (13 - D - 5 - b)   go to Products.java
         // query all the products from the product node in the db
+        // (26 - F)
+        // only shw the products that have
+        // product state "Approved" From the admin
+        // add it to setQuery()
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                        .setQuery(ProductsRef, Products.class)
+                        .setQuery(ProductsRef.orderByChild("productstate").equalTo("Approved"), Products.class)
                         .build();
         // (13 - D - 5 - d)
         // add firebase recycler adapter (and pass to it the FirebaseRecyclerOptions obj that contain our query)

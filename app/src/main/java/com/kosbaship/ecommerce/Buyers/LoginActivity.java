@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.kosbaship.ecommerce.Admin.AdminCategoryActivity;
+import com.kosbaship.ecommerce.Sellers.SellerCategoryActivity;
 import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.kosbaship.ecommerce.R;
@@ -233,7 +233,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //(9 - E - 1)
                                 //(9 - E - 2) Go and Create AdminCategoryActivity.java
                                 // open the AdminCategoryActivity.java
-                                Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, SellerCategoryActivity.class);
                                 // (13 - C - 2)
                                 // (13 - C - 3) go back to HomeActivity.java
                                 //                          (This step also inside MainActivity.java)

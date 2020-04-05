@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kosbaship.ecommerce.R;
+import com.kosbaship.ecommerce.Sellers.SellerCategoryActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -100,7 +101,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task)
             {
-                Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminCategoryActivity.class);
+                Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerCategoryActivity.class);
                 startActivity(intent);
                 finish();
 
@@ -149,7 +150,7 @@ public class AdminMaintainProductsActivity extends AppCompatActivity {
                     {
                         Toast.makeText(AdminMaintainProductsActivity.this, "Changes applied successfully.", Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(AdminMaintainProductsActivity.this, AdminCategoryActivity.class);
+                        Intent intent = new Intent(AdminMaintainProductsActivity.this, SellerCategoryActivity.class);
                         startActivity(intent);
                         finish();
                     }

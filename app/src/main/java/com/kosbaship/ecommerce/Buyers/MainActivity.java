@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.kosbaship.ecommerce.Admin.AdminCategoryActivity;
+import com.kosbaship.ecommerce.Sellers.SellerCategoryActivity;
 import com.kosbaship.ecommerce.Model.Users;
 import com.kosbaship.ecommerce.Prevalent.Prevalent;
 import com.kosbaship.ecommerce.R;
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(MainActivity.this, AdminCategoryActivity.class);
+                            Intent intent = new Intent(MainActivity.this, SellerCategoryActivity.class);
                             // (13 - C - 2)
                             // (13 - C - 3) go back to HomeActivity.java
                             //                          (This step also inside MainActivity.java)

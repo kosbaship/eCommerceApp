@@ -79,6 +79,9 @@ public class SellerLoginActivity extends AppCompatActivity {
             loadingBar.show();
 
             // (25 - C - 3)
+            // (26) this step is to change AdminNewProductActivity
+            //          to be belong to the Seller
+            //        => then go to SellerAddNewProductActivity
             mAuth.signInWithEmailAndPassword(sEmail, sPassword)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override

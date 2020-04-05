@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Admin.AdminAddNewProductActivity">
+    tools:context=".Sellers.SellerAddNewProductActivity">
 
 
 
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_description"
-        android:inputType="textMultiLine"
+        android:inputType="number"
         android:layout_marginTop="6dp"
         android:padding="20dp"
         android:hint="Product Price..."
