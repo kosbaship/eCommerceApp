@@ -51,7 +51,7 @@ public class SearchProductsActivity extends AppCompatActivity {
 
 
         //(20 - C)
-        //(21) Go To activity_admin_category,xml
+        //(21) Go To activity_seller_category,xml
         //(20 - C - 1)
         // set on click li.. to the Search button
         SearchBtn.setOnClickListener(new View.OnClickListener() {

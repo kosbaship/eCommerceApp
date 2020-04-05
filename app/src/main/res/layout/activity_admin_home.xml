@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.AdminHomeActivity">
+
+
+<!--
+
+
+        // (27 - A - 1)
+        // (27 - A - 2) Go and Create AdminHomeActivity.java
+        // get this btns to activity_seller_category
+
+// (27 - A - 2) craate this design
+// (27 - A - 3) take th btns code from
+SellerCategoryActivity.java
+to AdminHomeActivity
+-->
+
+    <TextView
+        android:id="@+id/admin_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Welcome Dear Admin"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal" />
+
+
+<!--
+    // (27 - B - 1)
+    // (27 - B - 2) Goto AdminHomeActivity.java
+    // create this btn to check and approve new
+        products
+-->
+    <Button
+        android:id="@+id/check_approve_products_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_above="@+id/maintain_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/checkandapproveproducts"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+
+
+    <!--
+     // (26 - B)
+     // 1 - comment out these btns
+     // 2 - comment out these btns code in the java class
+     // 3 - rename the Java class AdminCategoryActivity.java
+     // 4 - rename activity_admin_add_new_product.xml
+     // to make it belong to sellers
+       // (26 - C) Goto SellerHomeActivity.java
+
+    -->
+    <Button
+        android:id="@+id/maintain_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_above="@+id/check_orders_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/maintainproducts"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+
+
+    <!--
+    //(18 - A - 1 - a)
+    //(18 - A - 2) go to AdminCategoryActivity
+        Create this btm
+     -->
+    <Button
+        android:id="@+id/check_orders_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_above="@+id/admin_logout_btn"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/checkneworders"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+
+    <!--
+
+            //(18 - A - 1 - b)
+            and also create this btn
+      -->
+
+    <Button
+        android:id="@+id/admin_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/logout"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        />
+
+</RelativeLayout>

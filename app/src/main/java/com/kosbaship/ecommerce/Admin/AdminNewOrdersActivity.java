@@ -22,8 +22,8 @@ import com.kosbaship.ecommerce.Model.AdminOrders;
 import com.kosbaship.ecommerce.R;
 
 //(18)
-//(18 - A) go  to activity_admin_category.xml
-// create this activity and then go to activity_admin_category.xml
+//(18 - A) go  to activity_seller_category.xmll
+// create this activity and then go to activity_seller_categoryy.xml
 // to create th btn which will open this activity
 public class AdminNewOrdersActivity extends AppCompatActivity {
 

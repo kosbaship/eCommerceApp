@@ -22,6 +22,7 @@
     <string name="serach">Search</string>
     <string name="maintainproducts">Maintain Products</string>
     <string name="checkneworders">Check New Orders</string>
+    <string name="checkandapproveproducts">Check And Approve Products</string>
     <string name="sellerregistrationform">Seller Registration Form</string>
     <string name="sellername">Name...</string>
     <string name="sellerphone">Phone...</string>

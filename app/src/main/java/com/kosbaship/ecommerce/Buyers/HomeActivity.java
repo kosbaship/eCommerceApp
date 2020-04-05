@@ -166,6 +166,7 @@ public class HomeActivity extends AppCompatActivity
         // (13 - D - 5 - b)   go to Products.java
         // query all the products from the product node in the db
         // (26 - F)
+        // (27) Goto activity_seller_category.xml
         // only shw the products that have
         // product state "Approved" From the admin
         // add it to setQuery()

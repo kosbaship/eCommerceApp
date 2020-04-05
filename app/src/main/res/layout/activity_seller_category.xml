@@ -161,72 +161,13 @@
             add this btn to allow the user to make modification to the product
 -->
 
+
 <!--
- // (26 - B)
- // 1 - comment out these btns
- // 2 - comment out these btns code in the java class
- // 3 - rename the Java class AdminCategoryActivity.java
- // 4 - rename activity_admin_add_new_product.xml
- // to make it belong to sellers
-   // (26 - C) Goto SellerHomeActivity.java
 
+        // (27 - A - 1)
+        // (27 - A - 2) Go and Create AdminHomeActivity.java
+        // take this btns to activity_admin_home.xml
 -->
-<!--    <Button-->
-<!--        android:id="@+id/maintain_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_above="@+id/check_orders_btn"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:background="@color/colorPrimaryDark"-->
-<!--        android:text="@string/maintainproducts"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textAllCaps="false"-->
-<!--        />-->
-
-
-<!--    &lt;!&ndash;-->
-<!--    //(18 - A - 1 - a)-->
-<!--    //(18 - A - 2) go to AdminCategoryActivity-->
-<!--        Create this btm-->
-<!--     &ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/check_orders_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_above="@+id/admin_logout_btn"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:background="@color/colorPrimaryDark"-->
-<!--        android:text="@string/checkneworders"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textAllCaps="false"-->
-<!--        />-->
-
-<!--&lt;!&ndash;-->
-
-<!--        //(18 - A - 1 - b)-->
-<!--        and also create this btn-->
-<!--  &ndash;&gt;-->
-<!--    -->
-<!--    <Button-->
-<!--        android:id="@+id/admin_logout_btn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="42dp"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginLeft="20dp"-->
-<!--        android:layout_marginRight="20dp"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:background="@color/colorPrimaryDark"-->
-<!--        android:text="@string/logout"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textAllCaps="false"-->
-<!--        />-->
 
 
 </RelativeLayout>

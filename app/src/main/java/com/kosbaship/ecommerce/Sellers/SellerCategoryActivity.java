@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.kosbaship.ecommerce.R;
 // (9 - E - 2)
-// (10) GO to activity_admin_category.xml
+// (10) GO to activity_seller_category.xmll
 // creation of this activity
 
 // (10 - B - 4)
@@ -19,12 +19,7 @@ public class SellerCategoryActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_category);
-        //(18 - A - 2 - a)
-        //(18 - B) go to admin_new_order.xml
-        // get reference to the logout btn and check order state
-//        findViewById(R.id.admin_logout_btn).setOnClickListener(this);
-//        findViewById(R.id.check_orders_btn).setOnClickListener(this);
+        setContentView(R.layout.activity_seller_category);
 
 
 
@@ -47,10 +42,7 @@ public class SellerCategoryActivity extends AppCompatActivity implements View.On
         findViewById(R.id.watches).setOnClickListener(this);
         findViewById(R.id.mobilephones).setOnClickListener(this);
 
-        //(21 - B - 1)
-        // declare and get reference to this btn on the screen
-//        findViewById(R.id.maintain_btn).setOnClickListener(this);
-        //         maintainProductsBtn = (Button) findViewById(R.id.);
+
 
     }
 
@@ -127,28 +119,6 @@ public class SellerCategoryActivity extends AppCompatActivity implements View.On
                 intent.putExtra("category", "Mobile Phones");
                 startActivity(intent);
                 break;
-
-            //(21 - B - 2)
-            //(21 - C) Go to HomeActivity.java
-            // create function to this btn
-            // send data to defrintiate bettwen the admin and the user
-//            case  R.id.maintain_btn:
-//                intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
-//                intent.putExtra("Admin", "Admin");
-//                startActivity(intent);
-//                break;
-            //(18 - A - 2 - b) create the functions for the two btns (check order & Logout)
-//            case  R.id.check_orders_btn:
-//                intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
-//                startActivity(intent);
-//                break;
-//            case  R.id.admin_logout_btn:
-//                intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
-//                // this flag to clear the activity from the previous task
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//                finish();
-//                break;
         }
     }
 }
