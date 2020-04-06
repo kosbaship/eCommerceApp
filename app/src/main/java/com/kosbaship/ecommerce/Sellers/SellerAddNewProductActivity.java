@@ -247,7 +247,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
         //                      to            allow read, write: if request.auth == null;
         // click publish
         loadingBar.setTitle("Add New Product");
-        loadingBar.setMessage("Dear Admin, please wait while we are adding the new product.");
+        loadingBar.setMessage("Dear Seller, please wait while we are adding the new product.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
 
