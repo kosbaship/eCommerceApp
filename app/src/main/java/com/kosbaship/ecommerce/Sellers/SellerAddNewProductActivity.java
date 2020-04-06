@@ -366,7 +366,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
         // (26 - A - 2)
         // Create Seller Identification so we can recognize them when the user purchase from them
         // (26 - A - 7)
-        // (26 - B) Go to activity_seller_categoryy.xml
+        // (26 - B) Go to activity_seller_category.xml
         // pass the values we get here
         productMap.put("sellerName", currentSellerName);
         productMap.put("sellerAddress", currentSellerAddress);

@@ -51,12 +51,12 @@ public class SellerHomeActivity extends AppCompatActivity {
                                break;
                            case R.id.nav_add:
                                selectedFragment = new AddFragment();
-                               // (26 - C)
-                               // send the Seller to MainActivity  activity
-                               Intent intentCat = new Intent(SellerHomeActivity.this, SellerCategoryActivity.class);
-                               startActivity(intentCat);
-                               // (26 - D) goto firebase Storage Rules and change it to != null
-                               // (26 - E) Goto SellerAddNewProductActivity.java
+//                               // (26 - C)
+//                               // send the Seller to MainActivity  activity
+//                               Intent intentCat = new Intent(SellerHomeActivity.this, SellerCategoryActivity.class);
+//                               startActivity(intentCat);
+//                               // (26 - D) goto firebase Storage Rules and change it to != null
+//                               // (26 - E) Goto SellerAddNewProductActivity.java
                                break;
                            case R.id.nav_logout:
                                selectedFragment = new LogoutFragment();

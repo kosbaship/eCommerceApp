@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
                         holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
                         //(28 - C - 8) get to  Products.java
-                        //(28 - C - 9)
+                        //(29) Modify AddFragment.java
                         holder.txtProductPrice.setText("Price = " + model.getPrice() + "$");
                         holder.txtProductStatus.setText("State : " + model.getProductstate());
                         // these two steps to check u are able to use picasso
