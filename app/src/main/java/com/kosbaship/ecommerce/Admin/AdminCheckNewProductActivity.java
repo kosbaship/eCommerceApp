@@ -137,6 +137,7 @@ public class AdminCheckNewProductActivity extends AppCompatActivity {
                 };
 
         //(27 - C - 7)
+        //(28) Goto activity_home_seller.xml
         // start listening to the adaptor
         recyclerView.setAdapter(adapter);
         adapter.startListening();

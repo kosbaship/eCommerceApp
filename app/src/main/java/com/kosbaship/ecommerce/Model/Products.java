@@ -8,7 +8,9 @@ package com.kosbaship.ecommerce.Model;
 public class Products {
     // this is all the product info
     //  u can get this variables names from the database
-    private String pname, description, price, image, category, pid, date, time;
+    //(28 - C - 8 - 1) add productstate
+    //(28 - C - 9) Go back to HomeFragment.java
+    private String pname, description, price, image, category, pid, date, time, productstate;
 
     // generate empty constructor
     public Products() {
@@ -26,7 +28,21 @@ public class Products {
         this.time = time;
     }
 
+    //(28 - C - 8 - 2) Generate the constructor
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String productstate) {
+        this.pname = pname;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.category = category;
+        this.pid = pid;
+        this.date = date;
+        this.time = time;
+        this.productstate = productstate;
+    }
+
     // then set the getter and setter
+
     public String getPname() {
         return pname;
     }
@@ -89,5 +105,13 @@ public class Products {
 
     public void setTime(String time) {
         this.time = time;
+    }
+    //(28 - C - 8 - 3) set getter and setter
+    public String getProductstate() {
+        return productstate;
+    }
+
+    public void setProductstate(String productstate) {
+        this.productstate = productstate;
     }
 }
